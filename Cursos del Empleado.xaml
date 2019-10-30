@@ -95,7 +95,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </Sequence>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID1" Condition="[in_FilaNoEncontrados(3).ToString = &quot;Completado&quot;]" DisplayName="Six Sigma = No" sap:VirtualizedContainerService.HintSize="87,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+            <FlowDecision x:Name="__ReferenceID1" Condition="[in_FilaNoEncontrados(3).ToString &lt;&gt; &quot;Completado&quot;]" DisplayName="Six Sigma = No" sap:VirtualizedContainerService.HintSize="87,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -122,7 +122,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </Sequence>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID0" Condition="[in_FilaNoEncontrados(4).ToString = &quot;Completado&quot;]" DisplayName="Negotiation = No" sap:VirtualizedContainerService.HintSize="99,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                    <FlowDecision x:Name="__ReferenceID0" Condition="[in_FilaNoEncontrados(4).ToString &lt;&gt; &quot;Completado&quot;]" DisplayName="Negotiation = No" sap:VirtualizedContainerService.HintSize="99,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
