@@ -92,7 +92,7 @@
               <av:PointCollection x:Key="ConnectorLocation">300,323 300,373</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Get New Employees" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Get New Employees" sap:VirtualizedContainerService.HintSize="468,971" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="NoEncontrados" />
             </Sequence.Variables>
@@ -101,7 +101,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:FilterDataTable DataTable="[PlanillaMRH]" DisplayName="Filtrar tabla de datos" sap:VirtualizedContainerService.HintSize="426,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[NoEncontrados]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable DataTable="[PlanillaMRH]" DisplayName="Filtrar PlanillaMRH a NoEncontrados" sap:VirtualizedContainerService.HintSize="426,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[NoEncontrados]" SelectColumnsMode="Keep">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
