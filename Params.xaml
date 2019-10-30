@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>576,1870</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>576,1984</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Params_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -56,7 +56,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Params" sap:VirtualizedContainerService.HintSize="556,1770" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Params" sap:VirtualizedContainerService.HintSize="556,1884" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:GenericValue" Name="ClientID" />
       <Variable x:TypeArguments="ui:GenericValue" Name="ClientSecret" />
@@ -68,15 +68,16 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="514,1678" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="514,1792" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Obtener Datos de las DT" sap:VirtualizedContainerService.HintSize="476,1451" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Obtener Datos de las DT" sap:VirtualizedContainerService.HintSize="476,1565" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:Comment DisplayName="Comentario" sap:VirtualizedContainerService.HintSize="434,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Obtener las credenciales de Params y la DT de PlanillaMRH de Google Sheet" />
           <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Get Params" sap:VirtualizedContainerService.HintSize="434,660" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" WorkbookPath="Data\Params.xlsx">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
@@ -154,7 +155,7 @@
                       </InArgument>
                     </uga:ReadRange.Range>
                   </uga:ReadRange>
-                  <ui:FilterDataTable DataTable="[out_PlanillaMRH]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_PlanillaMRH]" SelectColumnsMode="Remove">
+                  <ui:FilterDataTable DataTable="[out_PlanillaMRH]" DisplayName="Eliminar las 4 Primeras Filas" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_PlanillaMRH]" SelectColumnsMode="Keep">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                         <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
@@ -181,8 +182,12 @@
                       </scg:List>
                     </ui:FilterDataTable.Filters>
                     <ui:FilterDataTable.SelectColumns>
-                      <scg:List x:TypeArguments="InArgument" Capacity="4">
-                        <x:Null />
+                      <scg:List x:TypeArguments="InArgument" Capacity="8">
+                        <InArgument x:TypeArguments="x:Int32">[1]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[34]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[21]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[22]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[23]</InArgument>
                       </scg:List>
                     </ui:FilterDataTable.SelectColumns>
                   </ui:FilterDataTable>

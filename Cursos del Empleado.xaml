@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Cursos_del_Empleado" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_FilaEmpleados" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_FilaNoEncontrados" Type="InArgument(sd:DataRow)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -55,19 +55,20 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Cursos del Empleado" sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Flujo donde realiza las actividades dependiendo al estado de los 3 exámenes" DisplayName="Cursos del Empleado" sap:VirtualizedContainerService.HintSize="634,663" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
       <x:Reference>__ReferenceID5</x:Reference>
     </Flowchart.StartNode>
-    <FlowDecision x:Name="__ReferenceID5" Condition="[in_FilaEmpleados(21).ToString = &quot;No&quot;]" DisplayName="Scrum = No" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+    <FlowDecision x:Name="__ReferenceID5" Condition="[in_FilaNoEncontrados(2).ToString &lt;&gt; &quot;Completado&quot;]" DisplayName="Scrum = No" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -94,7 +95,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </Sequence>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID1" Condition="[in_FilaEmpleados(22).ToString = &quot;No&quot;]" DisplayName="Six Sigma = No" sap:VirtualizedContainerService.HintSize="87,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+            <FlowDecision x:Name="__ReferenceID1" Condition="[in_FilaNoEncontrados(3).ToString = &quot;Completado&quot;]" DisplayName="Six Sigma = No" sap:VirtualizedContainerService.HintSize="87,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -121,7 +122,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </Sequence>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID0" Condition="[in_FilaEmpleados(23).ToString = &quot;No&quot;]" DisplayName="Negotiation = No" sap:VirtualizedContainerService.HintSize="99,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                    <FlowDecision x:Name="__ReferenceID0" Condition="[in_FilaNoEncontrados(4).ToString = &quot;Completado&quot;]" DisplayName="Negotiation = No" sap:VirtualizedContainerService.HintSize="99,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
