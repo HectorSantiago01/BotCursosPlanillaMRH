@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="out_PlanillaMRH" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_Empleados" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="out_UrlPortal" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>576,1984</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>576,2267</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Params_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="22">
@@ -56,7 +57,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Params" sap:VirtualizedContainerService.HintSize="556,1884" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Params" sap:VirtualizedContainerService.HintSize="556,2207" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:GenericValue" Name="ClientID" />
       <Variable x:TypeArguments="ui:GenericValue" Name="ClientSecret" />
@@ -68,9 +69,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="514,1792" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Intentar capturar" sap:VirtualizedContainerService.HintSize="514,2115" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Obtener Datos de las DT" sap:VirtualizedContainerService.HintSize="476,1565" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Obtener Datos de las DT" sap:VirtualizedContainerService.HintSize="476,1888" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -78,13 +79,14 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:Comment DisplayName="Comentario" sap:VirtualizedContainerService.HintSize="434,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Obtener las credenciales de Params y la DT de PlanillaMRH de Google Sheet" />
-          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Get Params" sap:VirtualizedContainerService.HintSize="434,660" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" WorkbookPath="Data\Params.xlsx">
+          <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Cancelar proceso" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="excel" />
+          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Get Params" sap:VirtualizedContainerService.HintSize="434,859" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" WorkbookPath="Data\Params.xlsx">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Hacer Params" sap:VirtualizedContainerService.HintSize="376,551" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Hacer Params" sap:VirtualizedContainerService.HintSize="376,750" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="scg:IEnumerable(x:Object)" Name="Params" />
                   </Sequence.Variables>
@@ -124,6 +126,15 @@
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="ui:GenericValue">[Params.ElementAt(3).ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ExcelReadRow DisplayName="Get Credential Sheet" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRow_2" Result="[Params]" SheetName="CredentialSheet" StartingCell="A5" />
+                  <Assign DisplayName="Get SheetName" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_UrlPortal]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[Params.ElementAt(0).ToString]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
@@ -184,10 +195,12 @@
                     <ui:FilterDataTable.SelectColumns>
                       <scg:List x:TypeArguments="InArgument" Capacity="8">
                         <InArgument x:TypeArguments="x:Int32">[1]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32">[34]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32">[21]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32">[22]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[2]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[3]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[36]</InArgument>
                         <InArgument x:TypeArguments="x:Int32">[23]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[24]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32">[25]</InArgument>
                       </scg:List>
                     </ui:FilterDataTable.SelectColumns>
                   </ui:FilterDataTable>
@@ -230,6 +243,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
+          <ui:KillProcess ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Cancelar proceso" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="KillProcess_2" ProcessName="excel" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
